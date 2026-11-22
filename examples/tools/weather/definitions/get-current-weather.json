@@ -1,0 +1,44 @@
+{
+  "name": "get-current-weather",
+  "description": "Retrieve the current temperature and weather conditions for a city.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "city": {
+        "type": "string",
+        "description": "City name, optionally qualified with region or country."
+      },
+      "units": {
+        "type": "string",
+        "enum": ["metric", "imperial"],
+        "description": "Measurement unit system."
+      }
+    },
+    "required": ["city"],
+    "additionalProperties": false
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "city": { "type": "string" },
+      "units": { "type": "string", "enum": ["metric", "imperial"] },
+      "temperature": { "type": "number" },
+      "conditions": { "type": "string" }
+    },
+    "required": ["city", "units", "temperature", "conditions"]
+  },
+  "vars": {
+    "defaultUnits": {
+      "type": "string",
+      "required": false,
+      "default": "metric",
+      "description": "Default unit system when not specified in tool arguments."
+    }
+  },
+  "annotations": {
+    "readOnly": true,
+    "destructive": false,
+    "idempotent": true,
+    "networkAccess": true
+  }
+}

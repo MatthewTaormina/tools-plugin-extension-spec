@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "0.1.0",
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "Reference example toolset for querying current weather conditions.",
+  "runtime": "node",
+  "vars": {
+    "apiBaseUrl": {
+      "type": "string",
+      "required": true,
+      "description": "Base URL for the weather service API."
+    },
+    "timeoutMs": {
+      "type": "integer",
+      "required": false,
+      "default": 5000,
+      "description": "HTTP request timeout in milliseconds."
+    }
+  },
+  "tools": [
+    {
+      "name": "get-current-weather",
+      "definition": "definitions/get-current-weather.json",
+      "handler": "handlers/get-current-weather.mjs",
+      "enabled": true
+    }
+  ]
+}
